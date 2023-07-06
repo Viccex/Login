@@ -4,13 +4,12 @@
  * and open the template in the editor.
  */
 package login;
-
 /**
  *
  * @author LPG
  */
-public class Menu extends javax.swing.JFrame {
-
+public class Menu extends javax.swing.JFrame 
+{
     /**
      * Creates new form Menu
      */
@@ -42,9 +41,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         MenuPV = new javax.swing.JMenu();
         MenuBuscar = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        BuscarProducto = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,15 +95,19 @@ public class Menu extends javax.swing.JFrame {
         MenuBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/buscar.png"))); // NOI18N
         MenuBuscar.setText("Buscar");
         MenuBuscar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        MenuBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenuBuscarMouseClicked(evt);
+            }
+        });
 
-        jMenuItem2.setText("Usuario");
-        MenuBuscar.add(jMenuItem2);
-
-        jMenuItem3.setText("Producto");
-        MenuBuscar.add(jMenuItem3);
-
-        jMenuItem4.setText("Ventas");
-        MenuBuscar.add(jMenuItem4);
+        BuscarProducto.setText("Buscar producto");
+        BuscarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BuscarProductoMouseClicked(evt);
+            }
+        });
+        MenuBuscar.add(BuscarProducto);
 
         jMenuBar1.add(MenuBuscar);
 
@@ -116,15 +117,26 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 527, Short.MAX_VALUE)
+            .addGap(0, 472, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 491, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void MenuBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuBuscarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MenuBuscarMouseClicked
+
+    private void BuscarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarProductoMouseClicked
+        // TODO add your handling code here:
+        TercerMenu v=new TercerMenu();
+        v.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BuscarProductoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -162,6 +174,7 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu BuscarProducto;
     private javax.swing.JMenu MenuActu;
     private javax.swing.JMenu MenuBuscar;
     private javax.swing.JMenu MenuEliminar;
@@ -171,9 +184,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;

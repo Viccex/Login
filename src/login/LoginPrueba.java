@@ -1,27 +1,15 @@
 
 package login;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class LoginPrueba extends javax.swing.JFrame {
-    String contra = "1234";
-    String nom = "Juan";
+    String contra = "";
+    String nom = "";
 
     public LoginPrueba() 
     {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    
-    public void buscar()
-    {
-        try
-        {
-            URL url=new URL("http://localhost/Api/Index.php");
-        }
-        catch (MalformedURLException e){}
-}
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -52,29 +40,29 @@ public class LoginPrueba extends javax.swing.JFrame {
         LabelNombre.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         LabelNombre.setForeground(new java.awt.Color(255, 255, 255));
         LabelNombre.setText("Nombre");
-        getContentPane().add(LabelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, -1, 20));
+        getContentPane().add(LabelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, 20));
 
         LabelContraseña.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         LabelContraseña.setForeground(new java.awt.Color(255, 255, 255));
         LabelContraseña.setText("Contraseña");
-        getContentPane().add(LabelContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, 20));
+        getContentPane().add(LabelContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, -1, 20));
 
         LabelCredencial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/credencial-inicio.png"))); // NOI18N
-        getContentPane().add(LabelCredencial, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 100, 120));
+        getContentPane().add(LabelCredencial, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 100, 90));
 
         TextFieldNom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextFieldNomActionPerformed(evt);
             }
         });
-        getContentPane().add(TextFieldNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 120, -1));
+        getContentPane().add(TextFieldNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 202, 120, 30));
 
         TextFieldContra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextFieldContraActionPerformed(evt);
             }
         });
-        getContentPane().add(TextFieldContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 120, -1));
+        getContentPane().add(TextFieldContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 120, 30));
 
         LabelAcceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/acceder-inicio..png"))); // NOI18N
         LabelAcceder.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -82,10 +70,10 @@ public class LoginPrueba extends javax.swing.JFrame {
                 LabelAccederMouseClicked(evt);
             }
         });
-        getContentPane().add(LabelAcceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 100, 120));
+        getContentPane().add(LabelAcceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 110, 100));
 
         LabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo-inicio2.jpg"))); // NOI18N
-        getContentPane().add(LabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 460));
+        getContentPane().add(LabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -111,7 +99,6 @@ public class LoginPrueba extends javax.swing.JFrame {
             ventana.setVisible(true);
             this.setVisible(false);
         }
-
     }//GEN-LAST:event_LabelAccederMouseClicked
 
     /**
