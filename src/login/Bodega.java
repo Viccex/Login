@@ -1,20 +1,19 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package login;
+
 /**
  *
- * @author LPG
+ * @author cliente
  */
-public class MenuAdministrador extends javax.swing.JFrame 
-{
+public class Bodega extends javax.swing.JFrame {
+
     /**
-     * Creates new form Menu
+     * Creates new form MenuBodega
      */
-    public MenuAdministrador() 
-    {
+    public Bodega() {
         initComponents();
     }
 
@@ -28,37 +27,51 @@ public class MenuAdministrador extends javax.swing.JFrame
     private void initComponents() {
 
         PFondo = new javax.swing.JPanel();
+        BSalir = new javax.swing.JButton();
         MInicial = new javax.swing.JMenuBar();
         MRegistro = new javax.swing.JMenu();
         RBuscar = new javax.swing.JMenu();
         MInventario = new javax.swing.JMenu();
+        IBuscar = new javax.swing.JMenu();
         MActualizar = new javax.swing.JMenu();
-        MVentas = new javax.swing.JMenu();
-        MUsuarios = new javax.swing.JMenu();
+        ABuscar = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(0, 0, 0));
 
         PFondo.setBackground(new java.awt.Color(0, 153, 153));
-        PFondo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 3));
+        PFondo.setForeground(new java.awt.Color(255, 255, 255));
+
+        BSalir.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        BSalir.setText("Salir");
+        BSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PFondoLayout = new javax.swing.GroupLayout(PFondo);
         PFondo.setLayout(PFondoLayout);
         PFondoLayout.setHorizontalGroup(
             PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 757, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PFondoLayout.createSequentialGroup()
+                .addContainerGap(326, Short.MAX_VALUE)
+                .addComponent(BSalir)
+                .addGap(44, 44, 44))
         );
         PFondoLayout.setVerticalGroup(
             PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 359, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PFondoLayout.createSequentialGroup()
+                .addContainerGap(221, Short.MAX_VALUE)
+                .addComponent(BSalir)
+                .addGap(35, 35, 35))
         );
 
         MRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/registro.png"))); // NOI18N
-        MRegistro.setText("Registro productos.");
+        MRegistro.setText("R. Productos.");
         MRegistro.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
         RBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/buscar.png"))); // NOI18N
-        RBuscar.setText("Buscar producto");
+        RBuscar.setText("Buscar registro");
         RBuscar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         RBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -70,24 +83,36 @@ public class MenuAdministrador extends javax.swing.JFrame
         MInicial.add(MRegistro);
 
         MInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/inventario.png"))); // NOI18N
-        MInventario.setText("Inventario productos.");
+        MInventario.setText("I. Productos.");
         MInventario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+
+        IBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/buscar.png"))); // NOI18N
+        IBuscar.setText("Buscar inventario");
+        IBuscar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        IBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                IBuscarMouseClicked(evt);
+            }
+        });
+        MInventario.add(IBuscar);
+
         MInicial.add(MInventario);
 
         MActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/actualizar.png"))); // NOI18N
-        MActualizar.setText("Actualizacion inventario.");
+        MActualizar.setText("A. inventario.");
         MActualizar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+
+        ABuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/buscar.png"))); // NOI18N
+        ABuscar.setText("Buscar actualización");
+        ABuscar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        ABuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ABuscarMouseClicked(evt);
+            }
+        });
+        MActualizar.add(ABuscar);
+
         MInicial.add(MActualizar);
-
-        MVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/ventas.png"))); // NOI18N
-        MVentas.setText("Ventas productos.");
-        MVentas.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        MInicial.add(MVentas);
-
-        MUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/usuarios.png"))); // NOI18N
-        MUsuarios.setText("Acceso usuarios");
-        MUsuarios.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        MInicial.add(MUsuarios);
 
         setJMenuBar(MInicial);
 
@@ -95,7 +120,7 @@ public class MenuAdministrador extends javax.swing.JFrame
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PFondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,13 +130,29 @@ public class MenuAdministrador extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSalirActionPerformed
+        Inicio ventana=new Inicio();
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BSalirActionPerformed
+
     private void RBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RBuscarMouseClicked
-        MenuBuscar ventana=new MenuBuscar();
-        {
-            ventana.setVisible(true);
-            this.setVisible(false);
-        }
+        BBuscarRegistro ventana=new BBuscarRegistro();
+        ventana.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_RBuscarMouseClicked
+
+    private void IBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IBuscarMouseClicked
+        BBuscarInventario ventana=new BBuscarInventario();
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_IBuscarMouseClicked
+
+    private void ABuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ABuscarMouseClicked
+        BBuscarActualizacion ventana=new BBuscarActualizacion();
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_ABuscarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -130,34 +171,33 @@ public class MenuAdministrador extends javax.swing.JFrame
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bodega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bodega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bodega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bodega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuAdministrador().setVisible(true);
+                new Bodega().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu ABuscar;
+    private javax.swing.JButton BSalir;
+    private javax.swing.JMenu IBuscar;
     private javax.swing.JMenu MActualizar;
     private javax.swing.JMenuBar MInicial;
     private javax.swing.JMenu MInventario;
     private javax.swing.JMenu MRegistro;
-    private javax.swing.JMenu MUsuarios;
-    private javax.swing.JMenu MVentas;
     private javax.swing.JPanel PFondo;
     private javax.swing.JMenu RBuscar;
     // End of variables declaration//GEN-END:variables

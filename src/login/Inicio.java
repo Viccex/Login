@@ -3,19 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package login;
-
+import com.devazt.networking.HttpClient;
+import com.devazt.networking.OnHttpRequestComplete;
+import com.devazt.networking.Response;
+import org.json.JSONException;
+import org.json.JSONObject;
 /**
  *
  * @author cliente
  */
-public class Login extends javax.swing.JFrame {
-    String usuario = "";
-    String clave = "";
-
+public class Inicio extends javax.swing.JFrame {
     /**
      * Creates new form app
      */
-    public Login() {
+    public Inicio() {
         initComponents();
     }
 
@@ -31,16 +32,15 @@ public class Login extends javax.swing.JFrame {
         PFondo = new javax.swing.JPanel();
         BSalir = new javax.swing.JButton();
         LImagen = new javax.swing.JLabel();
-        LUsuario = new javax.swing.JLabel();
+        LArea = new javax.swing.JLabel();
         LClave = new javax.swing.JLabel();
-        TUsuario = new javax.swing.JTextField();
+        TArea = new javax.swing.JTextField();
         TClave = new javax.swing.JTextField();
         LAcceso = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         PFondo.setBackground(new java.awt.Color(0, 153, 153));
-        PFondo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 3));
 
         BSalir.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         BSalir.setText("Salir");
@@ -52,9 +52,9 @@ public class Login extends javax.swing.JFrame {
 
         LImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/credenciales.png"))); // NOI18N
 
-        LUsuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        LUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        LUsuario.setText("Usuario");
+        LArea.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        LArea.setForeground(new java.awt.Color(255, 255, 255));
+        LArea.setText("Area");
 
         LClave.setBackground(new java.awt.Color(0, 0, 0));
         LClave.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -78,12 +78,12 @@ public class Login extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(LClave)
-                    .addComponent(LUsuario))
+                    .addComponent(LArea))
                 .addGap(54, 54, 54)
                 .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(TClave, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                    .addComponent(TUsuario))
-                .addContainerGap(116, Short.MAX_VALUE))
+                    .addComponent(TArea))
+                .addContainerGap(122, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PFondoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,14 +108,14 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(PFondoLayout.createSequentialGroup()
                                 .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(TUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(LUsuario))
+                                    .addComponent(TArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(LArea))
                                 .addGap(26, 26, 26)
                                 .addComponent(LClave))
                             .addComponent(TClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(27, 27, 27)
                 .addComponent(LAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -126,7 +126,7 @@ public class Login extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PFondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(PFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -137,11 +137,63 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_BSalirActionPerformed
 
     private void LAccesoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LAccesoMouseClicked
-        MenuAdministrador ventana=new MenuAdministrador();
-        if (TUsuario.getText().equals(usuario) && TClave.getText().equals(clave))
+        try
         {
-            ventana.setVisible(true);
-            this.setVisible(false);
+            HttpClient cliente=new HttpClient(new OnHttpRequestComplete() 
+            {
+                @Override
+                public void onComplete(Response status) 
+                {
+                    if(status.isSuccess())
+                    {
+                        try
+                        {
+                            JSONObject Area=new JSONObject(status.getResult());
+                            String AreaWeb=Area.getJSONObject("0").get("area").toString();
+                            String ClaveWeb=Area.getJSONObject("0").get("clave_acceso").toString();
+                        
+                            if(TArea.getText().equals(AreaWeb) && TClave.getText().equals(ClaveWeb))
+                            {
+                                String a = TArea.getText();
+                                switch (a)
+                                {
+                                    case "Administracion":
+                                        Administracion admin=new Administracion();
+                                        admin.setVisible(true);
+                                        this.setVisible(false);
+                                        break;
+                                        
+                                    case "Caja":
+                                        Caja caja=new Caja();
+                                        caja.setVisible(true);
+                                        this.setVisible(false);
+                                        break;
+                                            
+                                    case "Bodega":
+                                        Bodega bodega=new Bodega();
+                                        bodega.setVisible(true);
+                                        this.setVisible(false);
+                                        break;
+                                }
+                            }
+                        }
+                        catch(JSONException e)
+                        {}
+                    }
+                    throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                }
+                private void setVisible(boolean b) 
+                {
+                    throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                }
+            });
+            String area=TArea.getText();
+            String clave=TClave.getText();
+            cliente.excecute("http://127.0.0.1/Api/login.php?area="+area+"&clave_acceso="+clave+"");
+        }
+        catch(UnsupportedOperationException e)
+        {
+            System.out.println("A ocurrido una exepcion");
         }
     }//GEN-LAST:event_LAccesoMouseClicked
 
@@ -162,14 +214,18 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -178,7 +234,7 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new Inicio().setVisible(true);
             }
         });
     }
@@ -186,11 +242,11 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BSalir;
     private javax.swing.JLabel LAcceso;
+    private javax.swing.JLabel LArea;
     private javax.swing.JLabel LClave;
     private javax.swing.JLabel LImagen;
-    private javax.swing.JLabel LUsuario;
     private javax.swing.JPanel PFondo;
+    private javax.swing.JTextField TArea;
     private javax.swing.JTextField TClave;
-    private javax.swing.JTextField TUsuario;
     // End of variables declaration//GEN-END:variables
 }

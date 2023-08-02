@@ -10,12 +10,12 @@ import com.devazt.networking.Response;
  *
  * @author cliente
  */
-public class MenuBuscar extends javax.swing.JFrame 
+public class ABuscarInventario extends javax.swing.JFrame 
 {
     /**
      * Creates new form TercerMenu
      */
-    public MenuBuscar() {
+    public ABuscarInventario() {
         initComponents();
     }
 
@@ -32,10 +32,11 @@ public class MenuBuscar extends javax.swing.JFrame
         PFondo = new javax.swing.JPanel();
         LTitulo = new javax.swing.JLabel();
         B1 = new javax.swing.JButton();
-        TID = new javax.swing.JTextField();
-        LID = new javax.swing.JLabel();
+        Tid = new javax.swing.JTextField();
+        Lid = new javax.swing.JLabel();
         LResultado = new javax.swing.JLabel();
         TResultado = new javax.swing.JTextField();
+        BSalir = new javax.swing.JButton();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -43,7 +44,6 @@ public class MenuBuscar extends javax.swing.JFrame
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PFondo.setBackground(new java.awt.Color(0, 153, 153));
-        PFondo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 3));
 
         LTitulo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         LTitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -57,55 +57,66 @@ public class MenuBuscar extends javax.swing.JFrame
             }
         });
 
-        LID.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        LID.setForeground(new java.awt.Color(255, 255, 255));
-        LID.setText("Ingrese el ID del producto:");
+        Lid.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        Lid.setForeground(new java.awt.Color(255, 255, 255));
+        Lid.setText("Ingrese el ID del producto:");
 
         LResultado.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         LResultado.setForeground(new java.awt.Color(255, 255, 255));
-        LResultado.setText("Resultado:");
+        LResultado.setText("Resultado de la busqueda:");
 
         TResultado.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+
+        BSalir.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        BSalir.setText("Salir");
+        BSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PFondoLayout = new javax.swing.GroupLayout(PFondo);
         PFondo.setLayout(PFondoLayout);
         PFondoLayout.setHorizontalGroup(
             PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PFondoLayout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
-                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(PFondoLayout.createSequentialGroup()
-                        .addComponent(LID)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TID, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(B1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(TResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(63, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PFondoLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(LTitulo)
                 .addGap(281, 281, 281))
+            .addGroup(PFondoLayout.createSequentialGroup()
+                .addContainerGap(65, Short.MAX_VALUE)
+                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(TResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PFondoLayout.createSequentialGroup()
+                        .addComponent(Lid)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Tid, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(129, 129, 129)
+                        .addComponent(B1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BSalir))
+                .addContainerGap(66, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PFondoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(LResultado)
-                .addGap(308, 308, 308))
+                .addGap(267, 267, 267))
         );
         PFondoLayout.setVerticalGroup(
             PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PFondoLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(31, 31, 31)
                 .addComponent(LTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LID)
-                    .addComponent(TID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Tid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Lid)
                     .addComponent(B1))
-                .addGap(35, 35, 35)
-                .addComponent(LResultado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(LResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
+                .addComponent(BSalir)
+                .addGap(50, 50, 50))
         );
 
         getContentPane().add(PFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 280));
@@ -129,11 +140,11 @@ public class MenuBuscar extends javax.swing.JFrame
                     throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
                 }
             });
-            String id = TID.getText();
-            int n = Integer.parseInt(id);
-            if(n >= 0)
+            String id = Tid.getText();
+            int i = Integer.parseInt(id);
+            if(i >= 0)
             {
-                cliente.excecute("http://127.0.0.1/Api/NewIndex.php?id_producto="+id);
+                cliente.excecute("http://127.0.0.1/Api/i_productos.php?id_producto="+id);
             }
             else
             {
@@ -145,6 +156,12 @@ public class MenuBuscar extends javax.swing.JFrame
             System.out.println("A ocurrido una excepcion");
         }
     }//GEN-LAST:event_B1ActionPerformed
+
+    private void BSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSalirActionPerformed
+        Administracion ventana=new Administracion();
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,33 +180,48 @@ public class MenuBuscar extends javax.swing.JFrame
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ABuscarInventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ABuscarInventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ABuscarInventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ABuscarInventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuBuscar().setVisible(true);
+                new ABuscarInventario().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B1;
-    private javax.swing.JLabel LID;
+    private javax.swing.JButton BSalir;
     private javax.swing.JLabel LResultado;
     private javax.swing.JLabel LTitulo;
+    private javax.swing.JLabel Lid;
     private javax.swing.JPanel PFondo;
-    private javax.swing.JTextField TID;
     private javax.swing.JTextField TResultado;
+    private javax.swing.JTextField Tid;
     private javax.swing.JComboBox<String> jComboBox1;
     // End of variables declaration//GEN-END:variables
 }
