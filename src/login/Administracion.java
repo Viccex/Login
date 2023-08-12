@@ -32,6 +32,9 @@ public class Administracion extends javax.swing.JFrame
         MInicial = new javax.swing.JMenuBar();
         MRegistro = new javax.swing.JMenu();
         RBuscar = new javax.swing.JMenu();
+        RInsertar = new javax.swing.JMenu();
+        REliminar = new javax.swing.JMenu();
+        RActualizar = new javax.swing.JMenu();
         MInventario = new javax.swing.JMenu();
         IBuscar = new javax.swing.JMenu();
         MActualizar = new javax.swing.JMenu();
@@ -84,6 +87,36 @@ public class Administracion extends javax.swing.JFrame
             }
         });
         MRegistro.add(RBuscar);
+
+        RInsertar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/insertar.png"))); // NOI18N
+        RInsertar.setText("Insertar registro");
+        RInsertar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        RInsertar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RInsertarMouseClicked(evt);
+            }
+        });
+        MRegistro.add(RInsertar);
+
+        REliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/eliminar.png"))); // NOI18N
+        REliminar.setText("Eliminar registro");
+        REliminar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        REliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                REliminarMouseClicked(evt);
+            }
+        });
+        MRegistro.add(REliminar);
+
+        RActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/actualizar.png"))); // NOI18N
+        RActualizar.setText("Actualizar registro");
+        RActualizar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        RActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RActualizarMouseClicked(evt);
+            }
+        });
+        MRegistro.add(RActualizar);
 
         MInicial.add(MRegistro);
 
@@ -180,28 +213,38 @@ public class Administracion extends javax.swing.JFrame
     }//GEN-LAST:event_BSalirActionPerformed
 
     private void IBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IBuscarMouseClicked
-        ABuscarInventario ventana=new ABuscarInventario();
-        ventana.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_IBuscarMouseClicked
 
     private void ABuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ABuscarMouseClicked
-        ABuscarActualizacion ventana=new ABuscarActualizacion();
-        ventana.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_ABuscarMouseClicked
 
     private void VBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VBuscarMouseClicked
-        ABuscarVenta ventana=new ABuscarVenta();
-        ventana.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_VBuscarMouseClicked
 
     private void UBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UBuscarMouseClicked
-        ABuscarUsuario ventana=new ABuscarUsuario();
+        
+    }//GEN-LAST:event_UBuscarMouseClicked
+
+    private void RInsertarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RInsertarMouseClicked
+        AInsertarRegistro ventana=new AInsertarRegistro();
         ventana.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_UBuscarMouseClicked
+    }//GEN-LAST:event_RInsertarMouseClicked
+
+    private void REliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_REliminarMouseClicked
+        AEliminarRegistro ventana=new AEliminarRegistro();
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_REliminarMouseClicked
+
+    private void RActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RActualizarMouseClicked
+        AActualizarRegistro ventana=new AActualizarRegistro();
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_RActualizarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -312,7 +355,10 @@ public class Administracion extends javax.swing.JFrame
     private javax.swing.JMenu MUsuarios;
     private javax.swing.JMenu MVentas;
     private javax.swing.JPanel PFondo;
+    private javax.swing.JMenu RActualizar;
     private javax.swing.JMenu RBuscar;
+    private javax.swing.JMenu REliminar;
+    private javax.swing.JMenu RInsertar;
     private javax.swing.JMenu UBuscar;
     private javax.swing.JMenu VBuscar;
     // End of variables declaration//GEN-END:variables

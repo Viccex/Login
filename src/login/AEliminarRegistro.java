@@ -10,12 +10,12 @@ import com.devazt.networking.Response;
  *
  * @author cliente
  */
-public class ABuscarInventario extends javax.swing.JFrame 
+public class AEliminarRegistro extends javax.swing.JFrame 
 {
     /**
      * Creates new form TercerMenu
      */
-    public ABuscarInventario() {
+    public AEliminarRegistro() {
         initComponents();
     }
 
@@ -32,9 +32,8 @@ public class ABuscarInventario extends javax.swing.JFrame
         PFondo = new javax.swing.JPanel();
         LTitulo = new javax.swing.JLabel();
         B1 = new javax.swing.JButton();
-        Tid = new javax.swing.JTextField();
-        Lid = new javax.swing.JLabel();
-        LResultado = new javax.swing.JLabel();
+        TID = new javax.swing.JTextField();
+        LID = new javax.swing.JLabel();
         TResultado = new javax.swing.JTextField();
         BSalir = new javax.swing.JButton();
 
@@ -47,25 +46,21 @@ public class ABuscarInventario extends javax.swing.JFrame
 
         LTitulo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         LTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        LTitulo.setText("MENU DE BUSQUEDA");
+        LTitulo.setText("MENU DE ELIMINACION");
 
         B1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        B1.setText("Iniciar busqueda...");
+        B1.setText("Eliminar...");
         B1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B1ActionPerformed(evt);
             }
         });
 
-        Lid.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        Lid.setForeground(new java.awt.Color(255, 255, 255));
-        Lid.setText("Ingrese el ID del producto:");
+        LID.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        LID.setForeground(new java.awt.Color(255, 255, 255));
+        LID.setText("Ingrese el ID del producto:");
 
-        LResultado.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        LResultado.setForeground(new java.awt.Color(255, 255, 255));
-        LResultado.setText("Resultado de la busqueda:");
-
-        TResultado.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        TResultado.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         BSalir.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         BSalir.setText("Salir");
@@ -79,53 +74,46 @@ public class ABuscarInventario extends javax.swing.JFrame
         PFondo.setLayout(PFondoLayout);
         PFondoLayout.setHorizontalGroup(
             PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PFondoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(LTitulo)
-                .addGap(281, 281, 281))
             .addGroup(PFondoLayout.createSequentialGroup()
-                .addContainerGap(65, Short.MAX_VALUE)
+                .addGap(63, 63, 63)
                 .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(TResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(B1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PFondoLayout.createSequentialGroup()
-                        .addComponent(Lid)
+                        .addComponent(LID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Tid, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(129, 129, 129)
-                        .addComponent(B1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(TID, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BSalir))
-                .addContainerGap(66, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PFondoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LResultado)
-                .addGap(267, 267, 267))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(PFondoLayout.createSequentialGroup()
+                .addGap(147, 147, 147)
+                .addComponent(LTitulo)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         PFondoLayout.setVerticalGroup(
             PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PFondoLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(25, 25, 25)
                 .addComponent(LTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Tid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Lid)
-                    .addComponent(B1))
-                .addGap(36, 36, 36)
-                .addComponent(LResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(TID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LID))
+                .addGap(18, 18, 18)
+                .addComponent(B1)
+                .addGap(18, 18, 18)
                 .addComponent(TResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
-                .addGap(39, 39, 39)
+                .addGap(18, 18, 18)
                 .addComponent(BSalir)
-                .addGap(50, 50, 50))
+                .addGap(71, 71, 71))
         );
 
-        getContentPane().add(PFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 280));
+        getContentPane().add(PFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 280));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void B1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B1ActionPerformed
-        // TODO add your handling code here:
         try
         {
             HttpClient cliente=new HttpClient (new OnHttpRequestComplete() 
@@ -140,21 +128,10 @@ public class ABuscarInventario extends javax.swing.JFrame
                     throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
                 }
             });
-            String id = Tid.getText();
-            int i = Integer.parseInt(id);
-            if(i >= 0)
-            {
-                cliente.excecute("http://127.0.0.1/Api/i_productos.php?id_producto="+id);
-            }
-            else
-            {
-                TResultado.setText("La ID no es valida");
-            }
+            String id = TID.getText();
+            cliente.excecute("http://127.0.0.1/Api/r_productosE.php?id_producto="+id);
         }
-        catch(UnsupportedOperationException e)
-        {
-            System.out.println("A ocurrido una excepcion");
-        }
+        catch(UnsupportedOperationException e){}
     }//GEN-LAST:event_B1ActionPerformed
 
     private void BSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSalirActionPerformed
@@ -180,14 +157,126 @@ public class ABuscarInventario extends javax.swing.JFrame
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ABuscarInventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AEliminarRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ABuscarInventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AEliminarRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ABuscarInventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AEliminarRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ABuscarInventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AEliminarRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -208,7 +297,7 @@ public class ABuscarInventario extends javax.swing.JFrame
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ABuscarInventario().setVisible(true);
+                new AEliminarRegistro().setVisible(true);
             }
         });
     }
@@ -216,12 +305,11 @@ public class ABuscarInventario extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B1;
     private javax.swing.JButton BSalir;
-    private javax.swing.JLabel LResultado;
+    private javax.swing.JLabel LID;
     private javax.swing.JLabel LTitulo;
-    private javax.swing.JLabel Lid;
     private javax.swing.JPanel PFondo;
+    private javax.swing.JTextField TID;
     private javax.swing.JTextField TResultado;
-    private javax.swing.JTextField Tid;
     private javax.swing.JComboBox<String> jComboBox1;
     // End of variables declaration//GEN-END:variables
 }

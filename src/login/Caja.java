@@ -120,15 +120,11 @@ public class Caja extends javax.swing.JFrame
     }//GEN-LAST:event_BSalirActionPerformed
 
     private void VBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VBuscarMouseClicked
-        CBuscarVenta ventana=new CBuscarVenta();
-        ventana.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_VBuscarMouseClicked
 
     private void RBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RBuscarMouseClicked
-        CBuscarRegistro ventana=new CBuscarRegistro();
-        ventana.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_RBuscarMouseClicked
 
     /**

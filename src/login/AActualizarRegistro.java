@@ -11,12 +11,12 @@ import org.json.JSONObject;
  *
  * @author cliente
  */
-public class ABuscarRegistro extends javax.swing.JFrame 
+public class AActualizarRegistro extends javax.swing.JFrame 
 {
     /**
      * Creates new form TercerMenu
      */
-    public ABuscarRegistro() {
+    public AActualizarRegistro() {
         initComponents();
     }
 
@@ -32,19 +32,22 @@ public class ABuscarRegistro extends javax.swing.JFrame
         jComboBox1 = new javax.swing.JComboBox<>();
         PFondo = new javax.swing.JPanel();
         LTitulo = new javax.swing.JLabel();
-        B1 = new javax.swing.JButton();
+        BActualizar = new javax.swing.JButton();
+        TID = new javax.swing.JTextField();
+        LID = new javax.swing.JLabel();
+        TResultado = new javax.swing.JTextField();
         BSalir = new javax.swing.JButton();
+        LMarca = new javax.swing.JLabel();
+        LPresentacion = new javax.swing.JLabel();
         LNombre = new javax.swing.JLabel();
         LPrecio = new javax.swing.JLabel();
         TMarca = new javax.swing.JTextField();
         TNombre = new javax.swing.JTextField();
-        TID = new javax.swing.JTextField();
         TPrecio = new javax.swing.JTextField();
-        LID = new javax.swing.JLabel();
         TPresentacion = new javax.swing.JTextField();
-        LMarca = new javax.swing.JLabel();
-        LPresentacion = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        BBuscar = new javax.swing.JButton();
+        LMensaje = new javax.swing.JLabel();
+        BLimpiar = new javax.swing.JButton();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -55,15 +58,21 @@ public class ABuscarRegistro extends javax.swing.JFrame
 
         LTitulo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         LTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        LTitulo.setText("MENU DE BUSQUEDA");
+        LTitulo.setText("MENU DE ACTUALIZACION");
 
-        B1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        B1.setText("Iniciar busqueda...");
-        B1.addActionListener(new java.awt.event.ActionListener() {
+        BActualizar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        BActualizar.setText("Actualizar...");
+        BActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B1ActionPerformed(evt);
+                BActualizarActionPerformed(evt);
             }
         });
+
+        LID.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        LID.setForeground(new java.awt.Color(255, 255, 255));
+        LID.setText("Ingrese el ID del producto:");
+
+        TResultado.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         BSalir.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         BSalir.setText("Salir");
@@ -73,9 +82,17 @@ public class ABuscarRegistro extends javax.swing.JFrame
             }
         });
 
+        LMarca.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        LMarca.setForeground(new java.awt.Color(255, 255, 255));
+        LMarca.setText("Marca del producto:");
+
+        LPresentacion.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        LPresentacion.setForeground(new java.awt.Color(255, 255, 255));
+        LPresentacion.setText("Presentacion del producto:");
+
         LNombre.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         LNombre.setForeground(new java.awt.Color(255, 255, 255));
-        LNombre.setText("Nombre producto:");
+        LNombre.setText("Nombre del producto:");
 
         LPrecio.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         LPrecio.setForeground(new java.awt.Color(255, 255, 255));
@@ -87,21 +104,25 @@ public class ABuscarRegistro extends javax.swing.JFrame
             }
         });
 
-        LID.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        LID.setForeground(new java.awt.Color(255, 255, 255));
-        LID.setText("Ingrese el ID del producto:");
+        BBuscar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        BBuscar.setText("Iniciar busqueda...");
+        BBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BBuscarMouseClicked(evt);
+            }
+        });
 
-        LMarca.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        LMarca.setForeground(new java.awt.Color(255, 255, 255));
-        LMarca.setText("Marca del producto:");
+        LMensaje.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        LMensaje.setForeground(new java.awt.Color(255, 255, 255));
+        LMensaje.setText("Resultado de la busqueda:");
 
-        LPresentacion.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        LPresentacion.setForeground(new java.awt.Color(255, 255, 255));
-        LPresentacion.setText("Presentacion del producto:");
-
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Resultado de la busqueda:");
+        BLimpiar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        BLimpiar.setText("Limpiar");
+        BLimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BLimpiarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout PFondoLayout = new javax.swing.GroupLayout(PFondo);
         PFondo.setLayout(PFondoLayout);
@@ -110,47 +131,58 @@ public class ABuscarRegistro extends javax.swing.JFrame
             .addGroup(PFondoLayout.createSequentialGroup()
                 .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PFondoLayout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PFondoLayout.createSequentialGroup()
-                                .addComponent(LID)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(TID, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(B1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PFondoLayout.createSequentialGroup()
-                                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LNombre)
-                                    .addComponent(LPresentacion)
-                                    .addComponent(LPrecio)
-                                    .addComponent(LMarca))
-                                .addGap(53, 53, 53)
-                                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TPresentacion, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(BSalir, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(PFondoLayout.createSequentialGroup()
-                        .addGap(165, 165, 165)
+                        .addGap(169, 169, 169)
                         .addComponent(LTitulo))
                     .addGroup(PFondoLayout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(jLabel1)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                        .addGap(170, 170, 170)
+                        .addComponent(LMensaje)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PFondoLayout.createSequentialGroup()
+                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PFondoLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BSalir, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BLimpiar, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TResultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(PFondoLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PFondoLayout.createSequentialGroup()
+                                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LMarca)
+                                    .addComponent(LNombre)
+                                    .addComponent(LPresentacion)
+                                    .addComponent(LPrecio))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(TMarca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(TPresentacion, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(TPrecio, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(TNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(PFondoLayout.createSequentialGroup()
+                                .addComponent(LID)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(TID, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(BBuscar))))))
+                .addGap(59, 59, 59))
         );
         PFondoLayout.setVerticalGroup(
             PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PFondoLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(LTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(LTitulo)
                 .addGap(18, 18, 18)
                 .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LID))
                 .addGap(18, 18, 18)
-                .addComponent(B1)
-                .addGap(17, 17, 17)
-                .addComponent(jLabel1)
+                .addComponent(BBuscar)
+                .addGap(18, 18, 18)
+                .addComponent(LMensaje)
                 .addGap(18, 18, 18)
                 .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,16 +200,57 @@ public class ABuscarRegistro extends javax.swing.JFrame
                     .addComponent(TPresentacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LPresentacion))
                 .addGap(18, 18, 18)
+                .addComponent(BActualizar)
+                .addGap(18, 18, 18)
+                .addComponent(TResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(BLimpiar)
+                .addGap(18, 18, 18)
                 .addComponent(BSalir)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
-        getContentPane().add(PFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 390));
+        getContentPane().add(PFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void B1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B1ActionPerformed
+    private void BActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BActualizarActionPerformed
+        try
+        {
+            HttpClient cliente=new HttpClient (new OnHttpRequestComplete() 
+            {
+                @Override
+                public void onComplete(Response status) 
+                {
+                    if(status.isSuccess())
+                    {
+                        TResultado.setText(status.getResult());
+                    }
+                    throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                }
+            });
+            String id = TID.getText();
+            String marca = TMarca.getText();
+            String nom = TNombre.getText();
+            String precio = TPrecio.getText();
+            String pre = TPresentacion.getText();
+            
+            cliente.excecute("http://127.0.0.1/Api/r_productosA.php?id_producto="+id+"&marca="+marca+"&nombre="+nom+"&precio="+precio+"&presentacion="+pre);
+        }
+        catch(UnsupportedOperationException e){}
+    }//GEN-LAST:event_BActualizarActionPerformed
+
+    private void BSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSalirActionPerformed
+        Administracion ventana=new Administracion();
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BSalirActionPerformed
+
+    private void TNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TNombreActionPerformed
+    }//GEN-LAST:event_TNombreActionPerformed
+
+    private void BBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BBuscarMouseClicked
         try
         {
             HttpClient cliente=new HttpClient (new OnHttpRequestComplete() 
@@ -206,17 +279,16 @@ public class ABuscarRegistro extends javax.swing.JFrame
             cliente.excecute("http://127.0.0.1/Api/r_productos.php?id_producto="+id);
         }
         catch(UnsupportedOperationException e){}
-    }//GEN-LAST:event_B1ActionPerformed
+    }//GEN-LAST:event_BBuscarMouseClicked
 
-    private void BSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSalirActionPerformed
-        Administracion ventana=new Administracion();
-        ventana.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_BSalirActionPerformed
-
-    private void TNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TNombreActionPerformed
+    private void BLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BLimpiarMouseClicked
+        TID.setText(null);
+        TMarca.setText(null);
+        TNombre.setText(null);
+        TPrecio.setText(null);
+        TPresentacion.setText(null);
+        TResultado.setText(null);
+    }//GEN-LAST:event_BLimpiarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -235,142 +307,14 @@ public class ABuscarRegistro extends javax.swing.JFrame
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ABuscarRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AActualizarRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ABuscarRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AActualizarRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ABuscarRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AActualizarRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ABuscarRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AActualizarRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -503,16 +447,19 @@ public class ABuscarRegistro extends javax.swing.JFrame
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ABuscarRegistro().setVisible(true);
+                new AActualizarRegistro().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton B1;
+    private javax.swing.JButton BActualizar;
+    private javax.swing.JButton BBuscar;
+    private javax.swing.JButton BLimpiar;
     private javax.swing.JButton BSalir;
     private javax.swing.JLabel LID;
     private javax.swing.JLabel LMarca;
+    private javax.swing.JLabel LMensaje;
     private javax.swing.JLabel LNombre;
     private javax.swing.JLabel LPrecio;
     private javax.swing.JLabel LPresentacion;
@@ -523,7 +470,7 @@ public class ABuscarRegistro extends javax.swing.JFrame
     private javax.swing.JTextField TNombre;
     private javax.swing.JTextField TPrecio;
     private javax.swing.JTextField TPresentacion;
+    private javax.swing.JTextField TResultado;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

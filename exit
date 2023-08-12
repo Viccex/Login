@@ -1,0 +1,26 @@
+[33mcommit 038140c96c7aebe955e1d3323bccb9f0919dd397[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Viccex <137243089+Viccex@users.noreply.github.com>
+Date:   Wed Aug 2 17:48:20 2023 -0600
+
+    Logeo de usuarios e interfazes de busqueda listas
+
+[33mcommit 20512ca72527e202284cc39ceceeaf5f5c900731[m
+Author: Viccex <137243089+Viccex@users.noreply.github.com>
+Date:   Mon Jul 24 21:26:16 2023 -0600
+
+    Actualizacion de interfaz grafica y creacion del espaio de busqueda
+
+[33mcommit 7a7f42cc6394b26c4b473c91bc1e799d7166bf88[m
+Author: Viccex <137243089+Viccex@users.noreply.github.com>
+Date:   Thu Jul 6 11:43:05 2023 -0600
+
+    Cambios mas relevantes:
+    - Nuevo menu para buscar un producto en especifico.
+    - Actualizacion del login de acceso a la app
+    - Mejoras en la vista de los menus.
+
+[33mcommit b7b10d89631695f876f790e949b0dae596bdf81c[m
+Author: Viccex <137243089+Viccex@users.noreply.github.com>
+Date:   Tue Jun 20 23:02:00 2023 -0600
+
+    Se agrega el proyecto

@@ -137,21 +137,15 @@ public class Bodega extends javax.swing.JFrame {
     }//GEN-LAST:event_BSalirActionPerformed
 
     private void RBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RBuscarMouseClicked
-        BBuscarRegistro ventana=new BBuscarRegistro();
-        ventana.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_RBuscarMouseClicked
 
     private void IBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IBuscarMouseClicked
-        BBuscarInventario ventana=new BBuscarInventario();
-        ventana.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_IBuscarMouseClicked
 
     private void ABuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ABuscarMouseClicked
-        BBuscarActualizacion ventana=new BBuscarActualizacion();
-        ventana.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_ABuscarMouseClicked
 
     /**

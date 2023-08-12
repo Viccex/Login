@@ -192,9 +192,7 @@ public class Inicio extends javax.swing.JFrame {
             cliente.excecute("http://127.0.0.1/Api/login.php?area="+area+"&clave_acceso="+clave+"");
         }
         catch(UnsupportedOperationException e)
-        {
-            System.out.println("A ocurrido una exepcion");
-        }
+        {}
     }//GEN-LAST:event_LAccesoMouseClicked
 
     /**
