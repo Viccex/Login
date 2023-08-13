@@ -30,10 +30,11 @@ public class Caja extends javax.swing.JFrame
         PFondo = new javax.swing.JPanel();
         BSalir = new javax.swing.JButton();
         MInicial = new javax.swing.JMenuBar();
-        MRegistro = new javax.swing.JMenu();
-        RBuscar = new javax.swing.JMenu();
+        MRegistro2 = new javax.swing.JMenu();
+        RBuscar2 = new javax.swing.JMenu();
         MVentas = new javax.swing.JMenu();
         VBuscar = new javax.swing.JMenu();
+        VInsertar = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -65,21 +66,21 @@ public class Caja extends javax.swing.JFrame
                 .addGap(31, 31, 31))
         );
 
-        MRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/registro.png"))); // NOI18N
-        MRegistro.setText("R. Productos.");
-        MRegistro.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        MRegistro2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/registro.png"))); // NOI18N
+        MRegistro2.setText("R. Productos.");
+        MRegistro2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
-        RBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/buscar.png"))); // NOI18N
-        RBuscar.setText("Buscar registro");
-        RBuscar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        RBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+        RBuscar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/buscar.png"))); // NOI18N
+        RBuscar2.setText("Buscar registro");
+        RBuscar2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        RBuscar2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RBuscarMouseClicked(evt);
+                RBuscar2MouseClicked(evt);
             }
         });
-        MRegistro.add(RBuscar);
+        MRegistro2.add(RBuscar2);
 
-        MInicial.add(MRegistro);
+        MInicial.add(MRegistro2);
 
         MVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/ventas.png"))); // NOI18N
         MVentas.setText("V. Productos.");
@@ -94,6 +95,16 @@ public class Caja extends javax.swing.JFrame
             }
         });
         MVentas.add(VBuscar);
+
+        VInsertar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/insertar.png"))); // NOI18N
+        VInsertar.setText("Insertar venta");
+        VInsertar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        VInsertar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                VInsertarMouseClicked(evt);
+            }
+        });
+        MVentas.add(VInsertar);
 
         MInicial.add(MVentas);
 
@@ -119,13 +130,23 @@ public class Caja extends javax.swing.JFrame
         this.setVisible(false);
     }//GEN-LAST:event_BSalirActionPerformed
 
+    private void RBuscar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RBuscar2MouseClicked
+        CBuscarRegistro ventana=new CBuscarRegistro();
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_RBuscar2MouseClicked
+
     private void VBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VBuscarMouseClicked
-        
+        CBuscarVenta ventana=new CBuscarVenta();
+        ventana.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_VBuscarMouseClicked
 
-    private void RBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RBuscarMouseClicked
-        
-    }//GEN-LAST:event_RBuscarMouseClicked
+    private void VInsertarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VInsertarMouseClicked
+        CInsertarVenta ventana=new CInsertarVenta();
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_VInsertarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -292,10 +313,11 @@ public class Caja extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BSalir;
     private javax.swing.JMenuBar MInicial;
-    private javax.swing.JMenu MRegistro;
+    private javax.swing.JMenu MRegistro2;
     private javax.swing.JMenu MVentas;
     private javax.swing.JPanel PFondo;
-    private javax.swing.JMenu RBuscar;
+    private javax.swing.JMenu RBuscar2;
     private javax.swing.JMenu VBuscar;
+    private javax.swing.JMenu VInsertar;
     // End of variables declaration//GEN-END:variables
 }

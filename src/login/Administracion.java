@@ -39,10 +39,15 @@ public class Administracion extends javax.swing.JFrame
         IBuscar = new javax.swing.JMenu();
         MActualizar = new javax.swing.JMenu();
         ABuscar = new javax.swing.JMenu();
+        AInsertar = new javax.swing.JMenu();
         MVentas = new javax.swing.JMenu();
         VBuscar = new javax.swing.JMenu();
+        VInsertar = new javax.swing.JMenu();
         MUsuarios = new javax.swing.JMenu();
         UBuscar = new javax.swing.JMenu();
+        UInsertar = new javax.swing.JMenu();
+        UEliminar = new javax.swing.JMenu();
+        UActualizar = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -62,14 +67,14 @@ public class Administracion extends javax.swing.JFrame
         PFondoLayout.setHorizontalGroup(
             PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PFondoLayout.createSequentialGroup()
-                .addContainerGap(508, Short.MAX_VALUE)
+                .addContainerGap(537, Short.MAX_VALUE)
                 .addComponent(BSalir)
                 .addGap(32, 32, 32))
         );
         PFondoLayout.setVerticalGroup(
             PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PFondoLayout.createSequentialGroup()
-                .addContainerGap(310, Short.MAX_VALUE)
+                .addContainerGap(297, Short.MAX_VALUE)
                 .addComponent(BSalir)
                 .addGap(34, 34, 34))
         );
@@ -150,6 +155,16 @@ public class Administracion extends javax.swing.JFrame
         });
         MActualizar.add(ABuscar);
 
+        AInsertar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/actualizar.png"))); // NOI18N
+        AInsertar.setText("Insertar actualizacion");
+        AInsertar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        AInsertar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AInsertarMouseClicked(evt);
+            }
+        });
+        MActualizar.add(AInsertar);
+
         MInicial.add(MActualizar);
 
         MVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/ventas.png"))); // NOI18N
@@ -166,6 +181,16 @@ public class Administracion extends javax.swing.JFrame
         });
         MVentas.add(VBuscar);
 
+        VInsertar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/insertar.png"))); // NOI18N
+        VInsertar.setText("Insertar venta");
+        VInsertar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        VInsertar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                VInsertarMouseClicked(evt);
+            }
+        });
+        MVentas.add(VInsertar);
+
         MInicial.add(MVentas);
 
         MUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/usuarios.png"))); // NOI18N
@@ -181,6 +206,36 @@ public class Administracion extends javax.swing.JFrame
             }
         });
         MUsuarios.add(UBuscar);
+
+        UInsertar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/insertar.png"))); // NOI18N
+        UInsertar.setText("Insertar usuario");
+        UInsertar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        UInsertar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                UInsertarMouseClicked(evt);
+            }
+        });
+        MUsuarios.add(UInsertar);
+
+        UEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/eliminar.png"))); // NOI18N
+        UEliminar.setText("Eliminar usuario");
+        UEliminar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        UEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                UEliminarMouseClicked(evt);
+            }
+        });
+        MUsuarios.add(UEliminar);
+
+        UActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/actualizar.png"))); // NOI18N
+        UActualizar.setText("Actualizar usuario");
+        UActualizar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        UActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                UActualizarMouseClicked(evt);
+            }
+        });
+        MUsuarios.add(UActualizar);
 
         MInicial.add(MUsuarios);
 
@@ -213,19 +268,27 @@ public class Administracion extends javax.swing.JFrame
     }//GEN-LAST:event_BSalirActionPerformed
 
     private void IBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IBuscarMouseClicked
-        
+        ABuscarInventario ventana=new ABuscarInventario();
+        ventana.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_IBuscarMouseClicked
 
     private void ABuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ABuscarMouseClicked
-        
+        ABuscarActualizacion ventana=new ABuscarActualizacion();
+        ventana.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_ABuscarMouseClicked
 
     private void VBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VBuscarMouseClicked
-        
+        ABuscarVenta ventana=new ABuscarVenta();
+        ventana.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_VBuscarMouseClicked
 
     private void UBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UBuscarMouseClicked
-        
+        ABuscarUsuario ventana=new ABuscarUsuario();
+        ventana.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_UBuscarMouseClicked
 
     private void RInsertarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RInsertarMouseClicked
@@ -245,6 +308,36 @@ public class Administracion extends javax.swing.JFrame
         ventana.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_RActualizarMouseClicked
+
+    private void VInsertarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VInsertarMouseClicked
+        AInsertarVenta ventana=new AInsertarVenta();
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_VInsertarMouseClicked
+
+    private void UInsertarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UInsertarMouseClicked
+        AInsertarUsuario ventana=new AInsertarUsuario();
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_UInsertarMouseClicked
+
+    private void UEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UEliminarMouseClicked
+        AEliminarUsuario ventana=new AEliminarUsuario();
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_UEliminarMouseClicked
+
+    private void UActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UActualizarMouseClicked
+        AActualizarUsuario ventana=new AActualizarUsuario();
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_UActualizarMouseClicked
+
+    private void AInsertarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AInsertarMouseClicked
+        AInsertarActualizacion ventana=new AInsertarActualizacion();
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_AInsertarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -346,6 +439,7 @@ public class Administracion extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu ABuscar;
+    private javax.swing.JMenu AInsertar;
     private javax.swing.JButton BSalir;
     private javax.swing.JMenu IBuscar;
     private javax.swing.JMenu MActualizar;
@@ -359,7 +453,11 @@ public class Administracion extends javax.swing.JFrame
     private javax.swing.JMenu RBuscar;
     private javax.swing.JMenu REliminar;
     private javax.swing.JMenu RInsertar;
+    private javax.swing.JMenu UActualizar;
     private javax.swing.JMenu UBuscar;
+    private javax.swing.JMenu UEliminar;
+    private javax.swing.JMenu UInsertar;
     private javax.swing.JMenu VBuscar;
+    private javax.swing.JMenu VInsertar;
     // End of variables declaration//GEN-END:variables
 }

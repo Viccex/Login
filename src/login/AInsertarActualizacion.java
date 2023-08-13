@@ -10,12 +10,12 @@ import com.devazt.networking.Response;
  *
  * @author cliente
  */
-public class AInsertarRegistro extends javax.swing.JFrame 
+public class AInsertarActualizacion extends javax.swing.JFrame 
 {
     /**
      * Creates new form TercerMenu
      */
-    public AInsertarRegistro() {
+    public AInsertarActualizacion() {
         initComponents();
     }
 
@@ -32,19 +32,17 @@ public class AInsertarRegistro extends javax.swing.JFrame
         PFondo = new javax.swing.JPanel();
         LTitulo = new javax.swing.JLabel();
         B1 = new javax.swing.JButton();
-        TID = new javax.swing.JTextField();
-        LID = new javax.swing.JLabel();
+        TNumero = new javax.swing.JTextField();
+        LNumero = new javax.swing.JLabel();
         LResultado = new javax.swing.JLabel();
         TResultado = new javax.swing.JTextField();
         BSalir = new javax.swing.JButton();
-        LMarca = new javax.swing.JLabel();
-        LPresentacion = new javax.swing.JLabel();
-        LNombre = new javax.swing.JLabel();
-        LPrecio = new javax.swing.JLabel();
-        TMarca = new javax.swing.JTextField();
-        TNombre = new javax.swing.JTextField();
-        TPrecio = new javax.swing.JTextField();
-        TPresentacion = new javax.swing.JTextField();
+        LCantidad = new javax.swing.JLabel();
+        LFecha = new javax.swing.JLabel();
+        LID = new javax.swing.JLabel();
+        TCantidad = new javax.swing.JTextField();
+        TFecha = new javax.swing.JTextField();
+        TID = new javax.swing.JTextField();
         BLimpiar = new javax.swing.JButton();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -66,9 +64,9 @@ public class AInsertarRegistro extends javax.swing.JFrame
             }
         });
 
-        LID.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        LID.setForeground(new java.awt.Color(255, 255, 255));
-        LID.setText("Ingrese un ID para el producto:");
+        LNumero.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        LNumero.setForeground(new java.awt.Color(255, 255, 255));
+        LNumero.setText("Ingrese el numero de factura:");
 
         LResultado.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         LResultado.setForeground(new java.awt.Color(255, 255, 255));
@@ -83,25 +81,21 @@ public class AInsertarRegistro extends javax.swing.JFrame
             }
         });
 
-        LMarca.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        LMarca.setForeground(new java.awt.Color(255, 255, 255));
-        LMarca.setText("Ingrese la marca del producto:");
+        LCantidad.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        LCantidad.setForeground(new java.awt.Color(255, 255, 255));
+        LCantidad.setText("Ingrese la cantidad:");
 
-        LPresentacion.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        LPresentacion.setForeground(new java.awt.Color(255, 255, 255));
-        LPresentacion.setText("Ingrese la presentacion del producto:");
+        LFecha.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        LFecha.setForeground(new java.awt.Color(255, 255, 255));
+        LFecha.setText("Ingrese la fecha de compra:");
 
-        LNombre.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        LNombre.setForeground(new java.awt.Color(255, 255, 255));
-        LNombre.setText("Ingrese el nombre producto:");
+        LID.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        LID.setForeground(new java.awt.Color(255, 255, 255));
+        LID.setText("Ingrese el id del producto:");
 
-        LPrecio.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        LPrecio.setForeground(new java.awt.Color(255, 255, 255));
-        LPrecio.setText("Ingrese el precio del producto:");
-
-        TNombre.addActionListener(new java.awt.event.ActionListener() {
+        TFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TNombreActionPerformed(evt);
+                TFechaActionPerformed(evt);
             }
         });
 
@@ -124,30 +118,27 @@ public class AInsertarRegistro extends javax.swing.JFrame
                         .addComponent(LTitulo))
                     .addGroup(PFondoLayout.createSequentialGroup()
                         .addGap(53, 53, 53)
-                        .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(B1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PFondoLayout.createSequentialGroup()
-                                    .addComponent(LMarca)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(TMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(PFondoLayout.createSequentialGroup()
-                                    .addComponent(LID)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(TID, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(TResultado, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(PFondoLayout.createSequentialGroup()
-                                    .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(LNombre)
-                                        .addComponent(LPresentacion)
-                                        .addComponent(LPrecio))
-                                    .addGap(53, 53, 53)
-                                    .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(TPresentacion, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(TPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(TNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(BLimpiar)
-                            .addComponent(BSalir))
+                        .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(B1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PFondoLayout.createSequentialGroup()
+                                .addComponent(LCantidad)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(TCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PFondoLayout.createSequentialGroup()
+                                .addComponent(LNumero)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(TNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PFondoLayout.createSequentialGroup()
+                                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LFecha)
+                                    .addComponent(LID))
+                                .addGap(106, 106, 106)
+                                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TID, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(TResultado, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BLimpiar, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BSalir, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addComponent(LResultado)))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
@@ -162,24 +153,20 @@ public class AInsertarRegistro extends javax.swing.JFrame
                 .addComponent(LTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LNumero))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LCantidad))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LFecha))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LID))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LMarca))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LNombre))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LPrecio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TPresentacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LPresentacion))
                 .addGap(18, 18, 18)
                 .addComponent(B1)
                 .addGap(18, 18, 18)
@@ -211,13 +198,12 @@ public class AInsertarRegistro extends javax.swing.JFrame
                     throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
                 }
             });
+            String numero = TNumero.getText();
+            String cantidad = TCantidad.getText();
+            String fecha = TFecha.getText();
             String id = TID.getText();
-            String marca = TMarca.getText();
-            String nom = TNombre.getText();
-            String precio = TPrecio.getText();
-            String pre = TPresentacion.getText();
             
-            cliente.excecute("http://127.0.0.1/Api/r_productosR.php?&id_producto="+id+"&marca="+marca+"&nombre="+nom+"&precio="+precio+"&presentacion="+pre);
+            cliente.excecute("http://127.0.0.1/Api/a_inventarioR.php?numero_factura="+numero+"&cantidad="+cantidad+"&fecha_compra="+fecha+"&id_producto="+id);
         }
         catch(UnsupportedOperationException e){}
     }//GEN-LAST:event_B1ActionPerformed
@@ -228,15 +214,14 @@ public class AInsertarRegistro extends javax.swing.JFrame
         this.setVisible(false);
     }//GEN-LAST:event_BSalirActionPerformed
 
-    private void TNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TNombreActionPerformed
-    }//GEN-LAST:event_TNombreActionPerformed
+    private void TFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFechaActionPerformed
+    }//GEN-LAST:event_TFechaActionPerformed
 
     private void BLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BLimpiarMouseClicked
+        TNumero.setText(null);
+        TCantidad.setText(null);
+        TFecha.setText(null);
         TID.setText(null);
-        TMarca.setText(null);
-        TNombre.setText(null);
-        TPrecio.setText(null);
-        TPresentacion.setText(null);
         TResultado.setText(null);
     }//GEN-LAST:event_BLimpiarMouseClicked
 
@@ -257,14 +242,78 @@ public class AInsertarRegistro extends javax.swing.JFrame
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AInsertarRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AInsertarActualizacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AInsertarRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AInsertarActualizacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AInsertarRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AInsertarActualizacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AInsertarRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AInsertarActualizacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -333,7 +382,7 @@ public class AInsertarRegistro extends javax.swing.JFrame
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AInsertarRegistro().setVisible(true);
+                new AInsertarActualizacion().setVisible(true);
             }
         });
     }
@@ -342,19 +391,17 @@ public class AInsertarRegistro extends javax.swing.JFrame
     private javax.swing.JButton B1;
     private javax.swing.JButton BLimpiar;
     private javax.swing.JButton BSalir;
+    private javax.swing.JLabel LCantidad;
+    private javax.swing.JLabel LFecha;
     private javax.swing.JLabel LID;
-    private javax.swing.JLabel LMarca;
-    private javax.swing.JLabel LNombre;
-    private javax.swing.JLabel LPrecio;
-    private javax.swing.JLabel LPresentacion;
+    private javax.swing.JLabel LNumero;
     private javax.swing.JLabel LResultado;
     private javax.swing.JLabel LTitulo;
     private javax.swing.JPanel PFondo;
+    private javax.swing.JTextField TCantidad;
+    private javax.swing.JTextField TFecha;
     private javax.swing.JTextField TID;
-    private javax.swing.JTextField TMarca;
-    private javax.swing.JTextField TNombre;
-    private javax.swing.JTextField TPrecio;
-    private javax.swing.JTextField TPresentacion;
+    private javax.swing.JTextField TNumero;
     private javax.swing.JTextField TResultado;
     private javax.swing.JComboBox<String> jComboBox1;
     // End of variables declaration//GEN-END:variables
