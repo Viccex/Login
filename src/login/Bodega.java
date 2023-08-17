@@ -31,14 +31,10 @@ public class Bodega extends javax.swing.JFrame {
         MInicial = new javax.swing.JMenuBar();
         MRegistro1 = new javax.swing.JMenu();
         RBuscar1 = new javax.swing.JMenu();
-        RInsertar = new javax.swing.JMenu();
-        REliminar = new javax.swing.JMenu();
-        RActualizar = new javax.swing.JMenu();
         MInventario = new javax.swing.JMenu();
         IBuscar = new javax.swing.JMenu();
         MActualizar = new javax.swing.JMenu();
         ABuscar = new javax.swing.JMenu();
-        AInsertar = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,36 +80,6 @@ public class Bodega extends javax.swing.JFrame {
         });
         MRegistro1.add(RBuscar1);
 
-        RInsertar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/insertar.png"))); // NOI18N
-        RInsertar.setText("Insertar registro");
-        RInsertar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        RInsertar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RInsertarMouseClicked(evt);
-            }
-        });
-        MRegistro1.add(RInsertar);
-
-        REliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/eliminar.png"))); // NOI18N
-        REliminar.setText("Eliminar registro");
-        REliminar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        REliminar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                REliminarMouseClicked(evt);
-            }
-        });
-        MRegistro1.add(REliminar);
-
-        RActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/actualizar.png"))); // NOI18N
-        RActualizar.setText("Actualizar registro");
-        RActualizar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        RActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RActualizarMouseClicked(evt);
-            }
-        });
-        MRegistro1.add(RActualizar);
-
         MInicial.add(MRegistro1);
 
         MInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/inventario.png"))); // NOI18N
@@ -146,16 +112,6 @@ public class Bodega extends javax.swing.JFrame {
         });
         MActualizar.add(ABuscar);
 
-        AInsertar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/actualizar.png"))); // NOI18N
-        AInsertar.setText("Insertar actualizacion");
-        AInsertar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        AInsertar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AInsertarMouseClicked(evt);
-            }
-        });
-        MActualizar.add(AInsertar);
-
         MInicial.add(MActualizar);
 
         setJMenuBar(MInicial);
@@ -186,24 +142,6 @@ public class Bodega extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_RBuscar1MouseClicked
 
-    private void RInsertarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RInsertarMouseClicked
-        BInsertarRegistro ventana=new BInsertarRegistro();
-        ventana.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_RInsertarMouseClicked
-
-    private void REliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_REliminarMouseClicked
-        BEliminarRegistro ventana=new BEliminarRegistro();
-        ventana.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_REliminarMouseClicked
-
-    private void RActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RActualizarMouseClicked
-        BActualizarRegistro ventana=new BActualizarRegistro();
-        ventana.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_RActualizarMouseClicked
-
     private void IBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IBuscarMouseClicked
         BBuscarInventario ventana=new BBuscarInventario();
         ventana.setVisible(true);
@@ -215,12 +153,6 @@ public class Bodega extends javax.swing.JFrame {
         ventana.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_ABuscarMouseClicked
-
-    private void AInsertarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AInsertarMouseClicked
-        BInsertarActualizacion ventana=new BInsertarActualizacion();
-        ventana.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_AInsertarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -260,7 +192,6 @@ public class Bodega extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu ABuscar;
-    private javax.swing.JMenu AInsertar;
     private javax.swing.JButton BSalir;
     private javax.swing.JMenu IBuscar;
     private javax.swing.JMenu MActualizar;
@@ -268,9 +199,6 @@ public class Bodega extends javax.swing.JFrame {
     private javax.swing.JMenu MInventario;
     private javax.swing.JMenu MRegistro1;
     private javax.swing.JPanel PFondo;
-    private javax.swing.JMenu RActualizar;
     private javax.swing.JMenu RBuscar1;
-    private javax.swing.JMenu REliminar;
-    private javax.swing.JMenu RInsertar;
     // End of variables declaration//GEN-END:variables
 }

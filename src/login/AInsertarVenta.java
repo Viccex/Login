@@ -7,8 +7,24 @@ package login;
 import com.devazt.networking.HttpClient;
 import com.devazt.networking.OnHttpRequestComplete;
 import com.devazt.networking.Response;
-import javax.swing.table.DefaultTableModel;
 import org.json.JSONObject;
+import java.io.*;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.HorizontalAlignment;
+import com.itextpdf.layout.property.TextAlignment;
+import java.awt.Desktop;
+import java.io.File;
+import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -28,7 +44,6 @@ public class AInsertarVenta extends javax.swing.JFrame {
         modelo.addColumn("Nombre");
         modelo.addColumn("Precio");
         modelo.addColumn("Cantidad");
-        modelo.addColumn("Fecha de venta");
         modelo.addColumn("Monto parcial");
         
         this.Tabla.setModel(modelo);
@@ -71,6 +86,10 @@ public class AInsertarVenta extends javax.swing.JFrame {
         TResultado = new javax.swing.JTextField();
         BLimpiar = new javax.swing.JButton();
         TNew = new javax.swing.JTextField();
+        BTicket = new javax.swing.JButton();
+        LCompra = new javax.swing.JLabel();
+        TCompra = new javax.swing.JTextField();
+        BImprimir = new javax.swing.JButton();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -99,7 +118,7 @@ public class AInsertarVenta extends javax.swing.JFrame {
         LFecha.setText("Fecha de venta:");
 
         BAñadir.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        BAñadir.setText("Añadir...");
+        BAñadir.setText("Añadir");
         BAñadir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BAñadirMouseClicked(evt);
@@ -112,7 +131,7 @@ public class AInsertarVenta extends javax.swing.JFrame {
         });
 
         BBuscar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        BBuscar.setText("Buscar...");
+        BBuscar.setText("Buscar");
         BBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BBuscarMouseClicked(evt);
@@ -131,13 +150,13 @@ public class AInsertarVenta extends javax.swing.JFrame {
 
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
         SP.setViewportView(Tabla);
@@ -147,7 +166,7 @@ public class AInsertarVenta extends javax.swing.JFrame {
         LExistencia.setText("Cantidad en existencia:");
 
         BEliminar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        BEliminar.setText("Eliminar...");
+        BEliminar.setText("Eliminar");
         BEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BEliminarActionPerformed(evt);
@@ -159,7 +178,7 @@ public class AInsertarVenta extends javax.swing.JFrame {
         LTotal.setText("Monto total:");
 
         BFinalizarCompra.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        BFinalizarCompra.setText("Finalizar compra...");
+        BFinalizarCompra.setText("Finalizar compra");
         BFinalizarCompra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BFinalizarCompraMouseClicked(evt);
@@ -172,7 +191,7 @@ public class AInsertarVenta extends javax.swing.JFrame {
         });
 
         BSalir.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        BSalir.setText("Salir...");
+        BSalir.setText("Salir");
         BSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BSalirActionPerformed(evt);
@@ -180,10 +199,30 @@ public class AInsertarVenta extends javax.swing.JFrame {
         });
 
         BLimpiar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        BLimpiar.setText("Limpiar...");
+        BLimpiar.setText("Limpiar");
         BLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BLimpiarActionPerformed(evt);
+            }
+        });
+
+        BTicket.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        BTicket.setText("Generar ticket");
+        BTicket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTicketActionPerformed(evt);
+            }
+        });
+
+        LCompra.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        LCompra.setForeground(new java.awt.Color(255, 255, 255));
+        LCompra.setText("Numero de compra:");
+
+        BImprimir.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        BImprimir.setText("Imprimir");
+        BImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BImprimirActionPerformed(evt);
             }
         });
 
@@ -197,55 +236,53 @@ public class AInsertarVenta extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(PFondoLayout.createSequentialGroup()
                 .addGap(48, 48, 48)
-                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(PFondoLayout.createSequentialGroup()
-                        .addComponent(BLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(BSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PFondoLayout.createSequentialGroup()
+                        .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TNew, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PFondoLayout.createSequentialGroup()
+                                .addComponent(LID)
+                                .addGap(32, 32, 32)
                                 .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(PFondoLayout.createSequentialGroup()
-                                        .addComponent(LID)
-                                        .addGap(32, 32, 32)
-                                        .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(BAñadir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(TID, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(BBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
-                                    .addComponent(TNew))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PFondoLayout.createSequentialGroup()
-                                        .addGap(150, 150, 150)
-                                        .addComponent(TNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PFondoLayout.createSequentialGroup()
-                                        .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(LExistencia)
-                                            .addComponent(LNombre)
-                                            .addComponent(LPrecio)
-                                            .addComponent(LFecha)
-                                            .addComponent(LTotal)
-                                            .addComponent(LCantidad))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(TFecha)
-                                                .addComponent(TTotal)
-                                                .addComponent(TCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(TPrecio)
-                                                .addComponent(TExistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                            .addComponent(SP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(PFondoLayout.createSequentialGroup()
-                            .addGap(263, 263, 263)
-                            .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(TResultado)
-                                .addGroup(PFondoLayout.createSequentialGroup()
-                                    .addComponent(BEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(BFinalizarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(70, Short.MAX_VALUE))
+                                    .addComponent(BAñadir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(TID, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(BBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PFondoLayout.createSequentialGroup()
+                                .addGap(150, 150, 150)
+                                .addComponent(TNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PFondoLayout.createSequentialGroup()
+                                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LExistencia)
+                                    .addComponent(LNombre)
+                                    .addComponent(LPrecio)
+                                    .addComponent(LFecha)
+                                    .addComponent(LTotal)
+                                    .addComponent(LCantidad)
+                                    .addComponent(LCompra))
+                                .addGap(18, 18, 18)
+                                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(TFecha)
+                                    .addComponent(TTotal)
+                                    .addComponent(TCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                    .addComponent(TPrecio)
+                                    .addComponent(TExistencia, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                    .addComponent(TCompra)))))
+                    .addComponent(SP, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
+                    .addGroup(PFondoLayout.createSequentialGroup()
+                        .addComponent(BFinalizarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(BTicket)
+                        .addGap(18, 18, 18)
+                        .addComponent(BImprimir))
+                    .addComponent(TResultado)
+                    .addGroup(PFondoLayout.createSequentialGroup()
+                        .addComponent(BLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(BSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         PFondoLayout.setVerticalGroup(
             PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,23 +321,30 @@ public class AInsertarVenta extends javax.swing.JFrame {
                             .addComponent(LID))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BBuscar)
-                        .addGap(24, 24, 24)
+                        .addGap(36, 36, 36)
                         .addComponent(BAñadir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TNew, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27)
+                        .addComponent(TNew, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BEliminar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LCompra))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(SP, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BFinalizarCompra)
-                    .addComponent(BEliminar))
+                    .addComponent(BTicket)
+                    .addComponent(BImprimir))
                 .addGap(18, 18, 18)
                 .addComponent(TResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(PFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BLimpiar)
                     .addComponent(BSalir))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addGap(57, 57, 57))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -368,26 +412,33 @@ public class AInsertarVenta extends javax.swing.JFrame {
     }//GEN-LAST:event_BBuscarActionPerformed
 
     private void BAñadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BAñadirMouseClicked
-        String info[]=new String[5];
+        String info[]=new String[4];
+        
         info[0]=TNombre.getText();
-        info[1]=TFecha.getText();
         
         double precio, cantidad, monto;
 
-        info[2]=TPrecio.getText();
-        info[3]=TCantidad.getText();
+        info[1]=TPrecio.getText();
+        info[2]=TCantidad.getText();
+        
         precio=Double.parseDouble(TPrecio.getText());
         cantidad=Double.parseDouble(TCantidad.getText());
         
         monto=precio*cantidad;
+        
         String m = String.valueOf(monto);
         
-        info[4]=m;
+        info[3]=m;
         
         modelo.addRow(info); 
 
-        LimpiarBusqueda();
         Total();
+        
+        TID.setText("");
+        TNombre.setText("");
+        TPrecio.setText("");
+        TCantidad.setText("");
+        TExistencia.setText("");  
     }//GEN-LAST:event_BAñadirMouseClicked
 
     private void BAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAñadirActionPerformed
@@ -459,6 +510,7 @@ public class AInsertarVenta extends javax.swing.JFrame {
 
     private void BLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BLimpiarActionPerformed
         TResultado.setText("");
+        TNew.setText("");
         TFecha.setText("");
         TTotal.setText("");
         
@@ -470,6 +522,74 @@ public class AInsertarVenta extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BLimpiarActionPerformed
 
+    private void BTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTicketActionPerformed
+        try 
+        {
+            String compra = TCompra.getText();
+            String fecha = TFecha.getText();
+  
+            File file = new File("C:/Ticket/"+compra+".pdf");
+            file.getParentFile().mkdirs();
+            PdfWriter writer;
+      
+            writer = new PdfWriter(file);
+            PdfDocument pdf = new PdfDocument(writer);
+            try (Document document = new Document(pdf, PageSize.A7) // Tamaño de un ticket
+            ) {
+                document.setMargins(10, 10, 10, 10);
+                Paragraph header = new Paragraph("Ticket de Compra").setTextAlignment(TextAlignment.CENTER);
+                
+                
+                document.add(header);
+                document.add(new Paragraph("----------------------------------------"));
+                Paragraph info = new Paragraph("Número de Factura:"+compra+"\nFecha:"+fecha);
+                document.add(info);
+                document.add(new Paragraph("----------------------------------------"));
+                Table table = new Table(4);
+                table.addCell("Nombre");
+                table.addCell("Precio");
+                table.addCell("Cantidad");
+                table.addCell("Monto");
+                
+                for (int i = 0; i < Tabla.getRowCount(); i++)
+                {
+                    table.addCell(Tabla.getValueAt(i,0).toString());
+                    table.addCell(Tabla.getValueAt(i,1).toString());
+                    table.addCell(Tabla.getValueAt(i,2).toString());
+                    table.addCell(Tabla.getValueAt(i,3).toString());
+                }
+                
+                document.add(table.setHorizontalAlignment(HorizontalAlignment.CENTER));
+                
+                document.add(new Paragraph("----------------------------------------"));
+                String total = TTotal.getText();
+                Paragraph totalInfo = new Paragraph("Total:$"+total).setTextAlignment(TextAlignment.RIGHT);
+                document.add(totalInfo);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(AInsertarVenta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_BTicketActionPerformed
+
+    private void BImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BImprimirActionPerformed
+        String filepad="C:/Ticket/1.pdf";
+        File pdfFile = Paths.get(filepad).toFile();
+        if (Desktop.isDesktopSupported()) {
+            Desktop desktop = Desktop.getDesktop();
+            if (desktop.isSupported(Desktop.Action.PRINT)) {
+                try {
+                    desktop.print(pdfFile);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("La acción de impresión no es compatible.");
+            }
+        } else {
+            System.out.println("El soporte de Desktop no está disponible en este sistema.");
+       }
+    }//GEN-LAST:event_BImprimirActionPerformed
+
     public void Total()
     {
         double Fila;
@@ -477,20 +597,10 @@ public class AInsertarVenta extends javax.swing.JFrame {
         
         for (int i = 0; i < Tabla.getRowCount(); i++) 
         {
-            Fila = Double.parseDouble(Tabla.getValueAt(i,4).toString());
+            Fila = Double.parseDouble(Tabla.getValueAt(i,3).toString());
             MTotal += Fila;
         }
-        
         TTotal.setText(""+MTotal);
-    }
-    
-    public void LimpiarBusqueda()
-    {   
-        TID.setText("");
-        TNombre.setText("");
-        TPrecio.setText("");
-        TCantidad.setText("");
-        TExistencia.setText("");
     }
     /**
      * @param args the command line arguments
@@ -533,9 +643,12 @@ public class AInsertarVenta extends javax.swing.JFrame {
     private javax.swing.JButton BBuscar;
     private javax.swing.JButton BEliminar;
     private javax.swing.JButton BFinalizarCompra;
+    private javax.swing.JButton BImprimir;
     private javax.swing.JButton BLimpiar;
     private javax.swing.JButton BSalir;
+    private javax.swing.JButton BTicket;
     private javax.swing.JLabel LCantidad;
+    private javax.swing.JLabel LCompra;
     private javax.swing.JLabel LExistencia;
     private javax.swing.JLabel LFecha;
     private javax.swing.JLabel LID;
@@ -546,6 +659,7 @@ public class AInsertarVenta extends javax.swing.JFrame {
     private javax.swing.JPanel PFondo;
     private javax.swing.JScrollPane SP;
     private javax.swing.JTextField TCantidad;
+    private javax.swing.JTextField TCompra;
     private javax.swing.JTextField TExistencia;
     private javax.swing.JTextField TFecha;
     private javax.swing.JTextField TID;

@@ -34,7 +34,6 @@ public class Caja extends javax.swing.JFrame
         RBuscar2 = new javax.swing.JMenu();
         MVentas = new javax.swing.JMenu();
         VBuscar = new javax.swing.JMenu();
-        VInsertar = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -96,16 +95,6 @@ public class Caja extends javax.swing.JFrame
         });
         MVentas.add(VBuscar);
 
-        VInsertar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesMenu/insertar.png"))); // NOI18N
-        VInsertar.setText("Insertar venta");
-        VInsertar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        VInsertar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                VInsertarMouseClicked(evt);
-            }
-        });
-        MVentas.add(VInsertar);
-
         MInicial.add(MVentas);
 
         setJMenuBar(MInicial);
@@ -141,12 +130,6 @@ public class Caja extends javax.swing.JFrame
         ventana.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_VBuscarMouseClicked
-
-    private void VInsertarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VInsertarMouseClicked
-        CInsertarVenta ventana=new CInsertarVenta();
-        ventana.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_VInsertarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -318,6 +301,5 @@ public class Caja extends javax.swing.JFrame
     private javax.swing.JPanel PFondo;
     private javax.swing.JMenu RBuscar2;
     private javax.swing.JMenu VBuscar;
-    private javax.swing.JMenu VInsertar;
     // End of variables declaration//GEN-END:variables
 }
